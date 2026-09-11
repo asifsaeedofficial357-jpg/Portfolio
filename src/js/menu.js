@@ -50,6 +50,7 @@ function toggleMenu() {
 
 function openMenu() {
   if (!menuOverlay || !menuToggle) return;
+  isOpen = true;
   
   // Update ARIA attributes
   menuToggle.setAttribute('aria-expanded', 'true');
@@ -62,6 +63,7 @@ function openMenu() {
   setCursorMenuState(true);
   
   // Animate background overlay with premium slow transition
+  gsap.killTweensOf([menuOverlay, '.menu-link']);
   gsap.fromTo(menuOverlay, 
     { opacity: 0 },
     { 
@@ -93,10 +95,10 @@ function openMenu() {
 
 function closeMenu() {
   if (!menuOverlay || !menuToggle) return;
+  isOpen = false;
   
   // Update ARIA attributes
   menuToggle.setAttribute('aria-expanded', 'false');
-  menuOverlay.setAttribute('aria-hidden', 'true');
   
   // Allow body scrolling
   document.body.classList.remove('menu-open');
@@ -105,10 +107,12 @@ function closeMenu() {
   setCursorMenuState(false);
   
   // Animate background overlay out
+  gsap.killTweensOf([menuOverlay, '.menu-link']);
   gsap.to(menuOverlay, {
     opacity: 0,
     duration: 0.5,
-    ease: 'power2.in'
+    ease: 'power2.in',
+    onComplete: () => menuOverlay.setAttribute('aria-hidden', 'true')
   });
   
   // Animate menu items out

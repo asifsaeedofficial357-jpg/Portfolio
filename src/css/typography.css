@@ -10,40 +10,6 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* Display Typography */
-.hero-title {
-  font-family: var(--font-primary);
-  font-size: var(--text-hero);
-  font-weight: 600;
-  line-height: 0.85;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
-  color: var(--color-text-primary);
-  position: relative;
-  z-index: var(--z-base);
-}
-
-.hero-line {
-  display: block;
-  white-space: nowrap;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.hero-line-1 {
-  padding-left: 0;
-}
-
-.hero-line-2 {
-  font-size: 0.6em;
-  padding-left: 0.1em;
-  color: var(--color-text-secondary);
-}
-
-.hero-line-3 {
-  padding-left: 0.05em;
-}
-
 /* Monospace Metadata */
 .mono {
   font-family: var(--font-mono);

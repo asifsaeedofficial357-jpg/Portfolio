@@ -20,7 +20,8 @@ let prefersReducedMotion = false;
 
 export function initCursor() {
   // Check for touch device
-  isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  // `ontouchstart` is present on several desktop browsers and wrongly hid the cursor.
+  isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
   
   // Check for reduced motion preference
   prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -55,6 +56,7 @@ export function initCursor() {
 function handleMouseMove(e) {
   mouseX = e.clientX;
   mouseY = e.clientY;
+  cursor?.classList.add('is-visible');
 }
 
 function handleMouseLeave() {
