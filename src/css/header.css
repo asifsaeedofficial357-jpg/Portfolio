@@ -74,6 +74,53 @@
   justify-content: flex-end;
 }
 
+/* Theme Toggle — PERFECT CIRCLE */
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  
+  &:hover {
+    border-color: var(--color-accent);
+    
+    .icon-sun,
+    .icon-moon {
+      color: var(--color-accent);
+    }
+  }
+}
+
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+  width: 18px;
+  height: 18px;
+  transition: opacity var(--transition-fast), color var(--transition-base);
+}
+
+[data-theme="dark"] .theme-toggle .icon-sun {
+  display: block;
+}
+
+[data-theme="dark"] .theme-toggle .icon-moon {
+  display: none;
+}
+
+[data-theme="light"] .theme-toggle .icon-sun {
+  display: none;
+}
+
+[data-theme="light"] .theme-toggle .icon-moon {
+  display: block;
+}
+
 /* Menu Toggle */
 .menu-toggle {
   display: flex;
@@ -85,6 +132,8 @@
   border: 1px solid var(--color-border);
   cursor: pointer;
   transition: all var(--transition-base);
+  position: relative;
+  z-index: 10000; /* Must be above menu overlay */
   
   &:hover {
     border-color: var(--color-accent);

@@ -23,8 +23,8 @@
 
 .cursor-dot {
   position: absolute;
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
   background: var(--color-accent);
   border-radius: 50%;
   transform: translate(-50%, -50%);
@@ -33,9 +33,9 @@
 
 .cursor-ring {
   position: absolute;
-  width: var(--cursor-ring-size);
-  height: var(--cursor-ring-size);
-  border: 1px solid rgba(242, 87, 43, 0.3);
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(242, 87, 43, 0.4);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   transition: width var(--transition-base), height var(--transition-base), 

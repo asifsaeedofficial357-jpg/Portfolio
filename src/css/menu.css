@@ -7,7 +7,7 @@
   position: fixed;
   inset: 0;
   background: var(--color-bg-primary);
-  z-index: var(--z-overlay);
+  z-index: 9000; /* Below menu toggle (10000) */
   display: flex;
   flex-direction: column;
   justify-content: center;
