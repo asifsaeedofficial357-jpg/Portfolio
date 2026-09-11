@@ -41,7 +41,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.5em; /* Breathing room between DESIGNER & and DEVELOPER */
+  gap: 0.8em; /* Breathing room between DESIGNER & and DEVELOPER - portrait sits in this space */
   margin-top: var(--space-4);
 }
 
