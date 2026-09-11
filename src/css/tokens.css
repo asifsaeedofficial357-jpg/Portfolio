@@ -1,0 +1,108 @@
+/* ========================================
+   DESIGN TOKENS — DevByAsif®
+   Premium Digital Instrument
+   ======================================== */
+
+:root {
+  /* Color Palette — Dark Theme (Default) */
+  --color-bg-primary: #0a0a0a;
+  --color-bg-secondary: #111111;
+  --color-bg-tertiary: #1a1a1a;
+  
+  --color-text-primary: #f5f5f0;
+  --color-text-secondary: #a0a0a0;
+  --color-text-tertiary: #666666;
+  
+  --color-accent: #d97e4a;
+  --color-accent-hover: #e8925c;
+  --color-accent-dim: rgba(217, 126, 74, 0.15);
+  
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-subtle: rgba(255, 255, 255, 0.04);
+  
+  /* Color Palette — Light Theme */
+  --color-bg-primary-light: #f5f5f0;
+  --color-bg-secondary-light: #ffffff;
+  --color-bg-tertiary-light: #ebebeb;
+  
+  --color-text-primary-light: #1a1a1a;
+  --color-text-secondary-light: #555555;
+  --color-text-tertiary-light: #888888;
+  
+  --color-border-light: rgba(0, 0, 0, 0.08);
+  --color-border-subtle-light: rgba(0, 0, 0, 0.04);
+  
+  /* Typography Scale */
+  --font-primary: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+  --text-3xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);
+  --text-4xl: clamp(3rem, 2rem + 5vw, 5rem);
+  --text-5xl: clamp(4rem, 2.5rem + 7.5vw, 8rem);
+  --text-hero: clamp(6rem, 4rem + 12vw, 15rem);
+  
+  /* Spacing Scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+  
+  /* Layout */
+  --container-max: 1440px;
+  --container-narrow: 960px;
+  --header-height: 80px;
+  --section-padding: clamp(4rem, 3rem + 5vw, 8rem);
+  
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-cursor: 100ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Easing */
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out-quad: cubic-bezier(0.45, 0, 0.55, 1);
+  --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
+  /* Z-Index Scale */
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-cursor: 9999;
+  
+  /* Cursor */
+  --cursor-size: 20px;
+  --cursor-ring-size: 44px;
+}
+
+/* Light Theme Override */
+[data-theme="light"] {
+  --color-bg-primary: var(--color-bg-primary-light);
+  --color-bg-secondary: var(--color-bg-secondary-light);
+  --color-bg-tertiary: var(--color-bg-tertiary-light);
+  
+  --color-text-primary: var(--color-text-primary-light);
+  --color-text-secondary: var(--color-text-secondary-light);
+  --color-text-tertiary: var(--color-text-tertiary-light);
+  
+  --color-border: var(--color-border-light);
+  --color-border-subtle: var(--color-border-subtle-light);
+}

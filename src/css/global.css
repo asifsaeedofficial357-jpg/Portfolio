@@ -1,0 +1,230 @@
+/* ========================================
+   GLOBAL STYLES — Layout & Structure
+   DevByAsif®
+   ======================================== */
+
+/* Main Layout */
+#main-content {
+  position: relative;
+  z-index: var(--z-base);
+}
+
+/* Container Utility */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  
+  @media (min-width: 768px) {
+    padding: 0 var(--space-10);
+  }
+  
+  @media (min-width: 1440px) {
+    padding: 0 var(--space-16);
+  }
+}
+
+/* Section Base */
+section {
+  position: relative;
+  padding-block: var(--section-padding);
+}
+
+/* Full Viewport Section */
+.viewport-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Grid Background Pattern */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--color-border-subtle) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border-subtle) 1px, transparent 1px);
+  background-size: 80px 80px;
+  background-position: center center;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: var(--z-base);
+  
+  @media (max-width: 768px) {
+    background-size: 40px 40px;
+  }
+}
+
+/* Subtle Fade Mask for Portrait */
+.portrait-blend {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(
+    to top,
+    var(--color-bg-primary) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Badge Styles */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-secondary);
+  transition: all var(--transition-fast);
+}
+
+.badge-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+/* CTA Button */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-8);
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-primary);
+  background: var(--color-bg-secondary);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--color-accent-dim);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+  
+  &:hover {
+    border-color: var(--color-accent);
+    
+    &::before {
+      opacity: 1;
+    }
+    
+    .cta-arrow {
+      transform: translateX(4px);
+    }
+  }
+}
+
+.cta-arrow {
+  font-size: var(--text-lg);
+  transition: transform var(--transition-fast);
+}
+
+/* Scroll to Top */
+.scroll-to-top {
+  position: fixed;
+  bottom: var(--space-8);
+  right: var(--space-8);
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all var(--transition-base);
+  z-index: var(--z-sticky);
+  cursor: pointer;
+  
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+  
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .icon-moon {
+    display: none;
+  }
+  
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+}
+
+[data-theme="light"] .theme-toggle {
+  .icon-sun {
+    display: none;
+  }
+  
+  .icon-moon {
+    display: block;
+  }
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="DevByAsif — Designer & Developer creating premium digital experiences" />
+    <meta name="theme-color" content="#0a0a0a" />
+    
+    <title>DevByAsif® — Designer & Developer</title>
+    
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/src/css/tokens.css" />
+    <link rel="stylesheet" href="/src/css/reset.css" />
+    <link rel="stylesheet" href="/src/css/typography.css" />
+    <link rel="stylesheet" href="/src/css/global.css" />
+    <link rel="stylesheet" href="/src/css/cursor.css" />
+    <link rel="stylesheet" href="/src/css/header.css" />
+    <link rel="stylesheet" href="/src/css/hero.css" />
+    <link rel="stylesheet" href="/src/css/menu.css" />
+    <link rel="stylesheet" href="/src/css/animations.css" />
+    <link rel="stylesheet" href="/src/css/responsive.css" />
+  </head>
+  
+  <body>
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor">
+      <div class="cursor-dot"></div>
+      <div class="cursor-ring"></div>
+    </div>
+    
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    
+    <!-- Header -->
+    <header class="header" id="header">
+      <div class="header-metadata">
+        <span class="header-status"></span>
+        <time class="header-time" id="headerTime">--:--</time>
+      </div>
+      
+      <div class="header-brand">
+        <a href="/" class="header-logo" aria-label="DevByAsif Home">
+          ASIF<span class="logo-mark">.</span>
+        </a>
+      </div>
+      
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="5" />
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+          </svg>
+        </button>
+        
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+          <span class="menu-text">MENU</span>
+          <div class="menu-icon">
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </div>
+    </header>
+    
+    <!-- Fullscreen Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+      <nav class="menu-nav" id="menuNav">
+        <ul class="menu-list">
+          <li class="menu-item">
+            <a href="#" class="menu-link" data-section="home">
+              <span class="menu-number">01</span>
+              <span class="menu-label">Home</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link" data-section="work">
+              <span class="menu-number">02</span>
+              <span class="menu-label">Work</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link" data-section="about">
+              <span class="menu-number">03</span>
+              <span class="menu-label">About</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link" data-section="services">
+              <span class="menu-number">04</span>
+              <span class="menu-label">Services</span>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link" data-section="contact">
+              <span class="menu-number">05</span>
+              <span class="menu-label">Contact</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="menu-footer">
+        <div class="menu-meta">
+          <span>Available for select projects</span>
+          <span>Based in Pakistan</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main Content -->
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section class="hero" id="hero">
+        <div class="hero-background">
+          <div class="hero-grid"></div>
+        </div>
+        
+        <div class="hero-typography">
+          <h1 class="hero-title">
+            <span class="hero-line hero-line-1">DESIGNER</span>
+            <span class="hero-line hero-line-2">&</span>
+            <span class="hero-line hero-line-3">DEVELOPER</span>
+          </h1>
+        </div>
+        
+        <div class="hero-portrait-container">
+          <div class="hero-portrait">
+            <img 
+              src="/assets/images/asif-hero.png" 
+              alt="Asif — Designer and Developer"
+              class="portrait-image"
+              loading="eager"
+              fetchpriority="high"
+            />
+            <div class="portrait-blend"></div>
+          </div>
+        </div>
+        
+        <div class="hero-social hero-social-left">
+          <a href="#" class="social-link" data-hover="external">
+            <span class="social-label">LinkedIn</span>
+          </a>
+          <a href="#" class="social-link" data-hover="external">
+            <span class="social-label">Upwork</span>
+          </a>
+          <a href="#" class="social-link" data-hover="external">
+            <span class="social-label">Fiverr</span>
+          </a>
+        </div>
+        
+        <div class="hero-social hero-social-right">
+          <a href="#" class="social-link" data-hover="external">
+            <span class="social-label">Instagram</span>
+          </a>
+          <a href="mailto:hello@devbyasif.com" class="social-link" data-hover="email">
+            <span class="social-label">Contact</span>
+          </a>
+        </div>
+        
+        <div class="hero-badges">
+          <div class="badge badge-status">
+            <span class="badge-indicator"></span>
+            Available for select projects
+          </div>
+          <div class="badge badge-tech">
+            WordPress / Webflow
+          </div>
+        </div>
+        
+        <div class="hero-cta">
+          <a href="mailto:hello@devbyasif.com" class="cta-button" data-cursor="expand">
+            <span class="cta-text">Let's Work Together</span>
+            <span class="cta-arrow">→</span>
+          </a>
+        </div>
+      </section>
+    </main>
+    
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 19V5M5 12l7-7 7 7" />
+      </svg>
+    </button>
+    
+    <!-- Scripts -->
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>
