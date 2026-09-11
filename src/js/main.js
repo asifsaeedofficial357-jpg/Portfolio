@@ -12,6 +12,7 @@ import { initMenu } from './menu.js';
 import { initTheme } from './theme.js';
 import { initScrollToTop } from './scrollToTop.js';
 import { startLiveClock } from './utilities.js';
+import { initConnectors } from './connectors.js';
 
 // Configuration
 const CONFIG = {
@@ -43,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initMenu(CONFIG);
   initHero();
+  initConnectors();
   initScrollToTop();
   
   // Set up social links

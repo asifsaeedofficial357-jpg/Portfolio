@@ -129,11 +129,13 @@
         
         <div class="hero-typography">
           <div class="hero-intro">
-            <span class="intro-mark"></span>
+            <svg class="intro-mark-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F2572B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/>
+            </svg>
             Hey, I'm Asif — a freelance Designer & Developer.
           </div>
           <h1 class="hero-title">
-            <span class="hero-line hero-line-1">DESIGNER &</span>
+            <span class="hero-line hero-line-1">DESIGNER <span class="ampersand" style="color: #F2572B;">&</span></span>
             <span class="hero-line hero-line-2">DEVELOPER</span>
           </h1>
         </div>
@@ -192,12 +194,21 @@
           </a>
         </div>
         
+        <!-- Scroll Indicator -->
+        <div class="hero-scroll-indicator" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </div>
+        
         <!-- Connector Lines SVG -->
         <svg class="hero-connectors" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <!-- Left connector: from left badge (upper-left) horizontally then diagonally down to hero area -->
+          <!-- Left connector -->
           <path class="connector-line connector-left" d="M 84 164 L 440 164 L 590 310" />
-          <!-- Right connector: from hero area diagonally up then horizontally to right badge (upper-right) -->
+          <circle class="connector-endpoint" cx="0" cy="0" r="3" fill="#F2572B" />
+          <!-- Right connector -->
           <path class="connector-line connector-right" d="M 850 310 L 1000 164 L 1356 164" />
+          <circle class="connector-endpoint" cx="0" cy="0" r="3" fill="#F2572B" />
         </svg>
       </section>
     </main>

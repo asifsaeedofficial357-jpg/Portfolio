@@ -19,15 +19,15 @@ let isTouchDevice = false;
 let prefersReducedMotion = false;
 
 export function initCursor() {
-  // Check for touch device
-  // `ontouchstart` is present on several desktop browsers and wrongly hid the cursor.
-  isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  // Check for touch device - must have BOTH hover:none AND pointer:coarse (true touch)
+  // Using comma (OR) was too broad for desktop environments
+  isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
   
   // Check for reduced motion preference
   prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   
-  // Don't initialize on touch devices or if reduced motion is preferred
-  if (isTouchDevice || prefersReducedMotion) {
+  // Don't initialize on actual touch devices
+  if (isTouchDevice) {
     return;
   }
   
@@ -38,8 +38,8 @@ export function initCursor() {
   cursorDot = cursor.querySelector('.cursor-dot');
   cursorRing = cursor.querySelector('.cursor-ring');
   
-  // Set initial position
-  cursor.style.opacity = '1';
+  // Remove inline opacity, let CSS handle it via .is-visible
+  // cursor.style.opacity = '1';
   
   // Track mouse movement
   document.addEventListener('mousemove', handleMouseMove);
@@ -49,7 +49,7 @@ export function initCursor() {
   // Add hover states for interactive elements
   setupCursorInteractions();
   
-  // Start animation loop
+  // Start animation loop (respects reduced motion internally)
   requestAnimationFrame(animateCursor);
 }
 
@@ -57,6 +57,7 @@ function handleMouseMove(e) {
   mouseX = e.clientX;
   mouseY = e.clientY;
   cursor?.classList.add('is-visible');
+  cursor?.classList.remove('hidden');
 }
 
 function handleMouseLeave() {
@@ -106,16 +107,22 @@ function setupCursorInteractions() {
 function animateCursor() {
   if (!cursorDot || !cursorRing) return;
   
-  // Smooth interpolation for dot
-  dotX += (mouseX - dotX) * 0.2;
-  dotY += (mouseY - dotY) * 0.2;
-  
-  // Slower interpolation for ring (lag effect)
-  ringX += (mouseX - ringX) * 0.1;
-  ringY += (mouseY - ringY) * 0.1;
-  
-  cursorDot.style.transform = `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
-  cursorRing.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
+  // If reduced motion is preferred, snap to position without smooth interpolation
+  if (prefersReducedMotion) {
+    cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+    cursorRing.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+  } else {
+    // Smooth interpolation for dot
+    dotX += (mouseX - dotX) * 0.2;
+    dotY += (mouseY - dotY) * 0.2;
+    
+    // Slower interpolation for ring (lag effect)
+    ringX += (mouseX - ringX) * 0.1;
+    ringY += (mouseY - ringY) * 0.1;
+    
+    cursorDot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0) translate(-50%, -50%)`;
+    cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+  }
   
   requestAnimationFrame(animateCursor);
 }
