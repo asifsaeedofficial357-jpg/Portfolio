@@ -34,6 +34,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: var(--space-2); /* Small gap for intro */
+}
+
+.hero-title {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em; /* Breathing room between DESIGNER & and DEVELOPER */
+  margin-top: var(--space-4);
 }
 
 /* Hero Intro Line */
@@ -78,9 +87,6 @@
   line-height: 0.9;
   letter-spacing: -0.03em;
   color: var(--color-text-secondary);
-  
-  /* Natural typography proportions - NO scaleX distortion */
-  transform: none;
   
   @media (max-width: 768px) {
     white-space: normal;
@@ -258,6 +264,7 @@
 .badge {
   display: inline-flex;
   align-items: center;
+  gap: var(--space-2);
   padding: var(--space-2) var(--space-4);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -270,6 +277,14 @@
   opacity: 0;
   transform: translateY(20px);
   transition: all var(--transition-base);
+}
+
+.badge-dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background: var(--color-accent);
+  border-radius: 50%;
 }
 
 .badge-left {
@@ -357,15 +372,15 @@
 
 .connector-line {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.4);
+  stroke: rgba(255, 255, 255, 0.5);
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
   opacity: 0;
-  filter: drop-shadow(0 0 2px rgba(242, 87, 43, 0.3));
+  filter: drop-shadow(0 0 3px rgba(242, 87, 43, 0.4));
   
   [data-theme="light"] & {
-    stroke: rgba(0, 0, 0, 0.3);
-    filter: drop-shadow(0 0 2px rgba(242, 87, 43, 0.2));
+    stroke: rgba(0, 0, 0, 0.4);
+    filter: drop-shadow(0 0 2px rgba(242, 87, 43, 0.3));
   }
 }
 
