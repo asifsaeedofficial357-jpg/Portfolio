@@ -58,11 +58,7 @@
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--color-text-primary);
-  transition: color var(--transition-fast);
-  
-  &:hover {
-    color: var(--color-accent);
-  }
+  /* NO hover animation -保持稳定 */
 }
 
 .logo-mark {
@@ -84,7 +80,7 @@
   align-items: center;
   gap: var(--space-3);
   padding: var(--space-2) var(--space-4);
-  border-radius: 100px;
+  border-radius: 4px;
   background: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
   cursor: pointer;
@@ -102,12 +98,17 @@
     border-color: var(--color-accent);
     
     .menu-icon span:nth-child(1) {
-      transform: rotate(45deg);
-      top: 0;
+      transform: rotate(45deg) translate(5px, 5px);
+      top: 5px;
     }
     
     .menu-icon span:nth-child(2) {
       opacity: 0;
+    }
+    
+    .menu-icon span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+      bottom: 5px;
     }
   }
 }
@@ -124,14 +125,14 @@
 .menu-icon {
   position: relative;
   width: 16px;
-  height: 12px;
+  height: 14px;
 }
 
 .menu-icon span {
   position: absolute;
   left: 0;
   width: 100%;
-  height: 1px;
+  height: 1.5px;
   background: var(--color-text-primary);
   transition: all var(--transition-base);
 }

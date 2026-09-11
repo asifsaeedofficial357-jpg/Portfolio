@@ -61,17 +61,17 @@ function openMenu() {
   // Update cursor state
   setCursorMenuState(true);
   
-  // Animate background overlay
+  // Animate background overlay with premium slow transition
   gsap.to(menuOverlay, {
     opacity: 1,
-    duration: 0.4,
-    ease: 'power2.out'
+    duration: 0.6,
+    ease: 'power3.out'
   });
   
   // Focus first menu item for accessibility
   const firstLink = menuOverlay.querySelector('.menu-link');
   if (firstLink) {
-    setTimeout(() => firstLink.focus(), 400);
+    setTimeout(() => firstLink.focus(), 500);
   }
 }
 
@@ -88,15 +88,15 @@ function closeMenu() {
   // Update cursor state
   setCursorMenuState(false);
   
-  // Animate background overlay
+  // Animate background overlay out
   gsap.to(menuOverlay, {
     opacity: 0,
-    duration: 0.3,
+    duration: 0.4,
     ease: 'power2.in'
   });
   
   // Return focus to menu toggle
-  setTimeout(() => menuToggle.focus(), 300);
+  setTimeout(() => menuToggle.focus(), 400);
 }
 
 function setupNavigationLinks(config) {
@@ -120,16 +120,36 @@ function setupNavigationLinks(config) {
         } else if (section === 'home') {
           scrollToElement(document.getElementById('hero'), 0);
         }
-      }, 400);
+      }, 500);
     });
     
-    // Add hover effects
+    // Add smooth hover effects with GSAP
     link.addEventListener('mouseenter', () => {
-      link.style.color = 'var(--color-text-primary)';
+      gsap.to(link.querySelector('.menu-number'), {
+        color: 'var(--color-accent)',
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+      gsap.to(link.querySelector('.menu-label'), {
+        color: 'var(--color-text-primary)',
+        x: 8,
+        duration: 0.4,
+        ease: 'power2.out'
+      });
     });
     
     link.addEventListener('mouseleave', () => {
-      link.style.color = '';
+      gsap.to(link.querySelector('.menu-number'), {
+        color: '',
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+      gsap.to(link.querySelector('.menu-label'), {
+        color: '',
+        x: 0,
+        duration: 0.4,
+        ease: 'power2.out'
+      });
     });
   });
 }

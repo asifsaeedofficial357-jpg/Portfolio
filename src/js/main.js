@@ -11,7 +11,7 @@ import { initHero } from './hero.js';
 import { initMenu } from './menu.js';
 import { initTheme } from './theme.js';
 import { initScrollToTop } from './scrollToTop.js';
-import { updateTime } from './utilities.js';
+import { startLiveClock } from './utilities.js';
 
 // Configuration
 const CONFIG = {
@@ -34,8 +34,8 @@ const CONFIG = {
 
 // Initialize all modules
 document.addEventListener('DOMContentLoaded', () => {
-  // Update time immediately
-  updateTime();
+  // Start live Pakistan clock (updates every second)
+  startLiveClock();
   
   // Initialize core functionality
   initTheme();
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 100);
   
   // Log initialization
-  console.log('%cDevByAsif® — Portfolio Initialized', 'color: #d97e4a; font-weight: bold; font-size: 12px;');
+  console.log('%cDevByAsif® — Portfolio Initialized', 'color: #F2572B; font-weight: bold; font-size: 12px;');
 });
 
 /**

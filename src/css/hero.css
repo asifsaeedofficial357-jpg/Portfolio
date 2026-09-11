@@ -33,6 +33,21 @@
   pointer-events: none;
 }
 
+.hero-subheading {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  margin-bottom: var(--space-6);
+  opacity: 0;
+  transform: translateY(20px);
+  
+  @media (max-width: 768px) {
+    margin-bottom: var(--space-4);
+  }
+}
+
 .hero-title {
   position: relative;
 }
@@ -189,7 +204,7 @@
 /* Hero Badges */
 .hero-badges {
   position: absolute;
-  bottom: var(--space-10);
+  bottom: calc(var(--space-16) + 40px);
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -200,25 +215,93 @@
     flex-direction: column;
     align-items: center;
     gap: var(--space-2);
-    bottom: calc(var(--space-10) + 60px);
+    bottom: calc(var(--space-16) + 80px);
   }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  transition: all var(--transition-base);
+}
+
+.badge-status {
+  color: var(--color-text-primary);
+  border-color: var(--color-accent-dim);
+}
+
+.badge-tech {
+  color: var(--color-text-secondary);
 }
 
 /* Hero CTA */
 .hero-cta {
   position: absolute;
-  bottom: var(--space-10);
-  right: var(--space-10);
+  bottom: calc(var(--space-16) + 40px);
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 4;
   
+  @media (min-width: 769px) {
+    left: auto;
+    right: var(--space-10);
+    transform: none;
+  }
+  
   @media (max-width: 768px) {
-    right: 50%;
-    transform: translateX(50%);
-    bottom: var(--space-6);
+    bottom: var(--space-10);
   }
 }
 
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  
+  &:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+    
+    .cta-icon {
+      transform: translate(2px, -2px);
+    }
+  }
+}
+
+.cta-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--transition-base);
+}
+
 /* Hero Animation States */
+.hero-loaded .hero-subheading {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s var(--ease-out-expo) 0.1s, 
+              transform 0.8s var(--ease-out-expo) 0.1s;
+}
+
 .hero-loaded .hero-line-1 {
   opacity: 1;
   transform: translateY(0);
@@ -247,8 +330,23 @@
               transform 1s var(--ease-out-expo) 0.3s;
 }
 
+.hero-loaded .badge {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s var(--ease-out-expo) 0.5s,
+              transform 0.6s var(--ease-out-expo) 0.5s;
+}
+
+.hero-loaded .cta-button {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s var(--ease-out-expo) 0.6s,
+              transform 0.6s var(--ease-out-expo) 0.6s;
+}
+
 /* Initial State for Animation */
 .hero:not(.hero-loaded) {
+  .hero-subheading,
   .hero-line {
     opacity: 0;
     transform: translateY(30px);
@@ -257,6 +355,12 @@
   .portrait-image {
     opacity: 0;
     transform: translateY(40px);
+  }
+  
+  .badge,
+  .cta-button {
+    opacity: 0;
+    transform: translateY(20px);
   }
 }
 

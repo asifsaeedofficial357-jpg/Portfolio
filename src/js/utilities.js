@@ -6,17 +6,32 @@
  */
 
 /**
- * Update the header time display
+ * Update the header time display — Pakistan Standard Time (Asia/Karachi)
+ * Updates every second with HH:MM:SS format
  */
 export function updateTime() {
   const timeElement = document.getElementById('headerTime');
   if (!timeElement) return;
   
+  // Use Intl.DateTimeFormat with Asia/Karachi timezone for accurate PKT
   const now = new Date();
-  const hours = now.getHours().toString().padStart(2, '0');
-  const minutes = now.getMinutes().toString().padStart(2, '0');
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Karachi',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  });
   
-  timeElement.textContent = `${hours}:${minutes}`;
+  timeElement.textContent = formatter.format(now);
+}
+
+/**
+ * Start the live clock that updates every second
+ */
+export function startLiveClock() {
+  updateTime(); // Initial call
+  setInterval(updateTime, 1000); // Update every second
 }
 
 /**

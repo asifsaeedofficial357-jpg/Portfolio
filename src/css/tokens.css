@@ -13,9 +13,13 @@
   --color-text-secondary: #a0a0a0;
   --color-text-tertiary: #666666;
   
-  --color-accent: #d97e4a;
-  --color-accent-hover: #e8925c;
-  --color-accent-dim: rgba(217, 126, 74, 0.15);
+  /* Primary Accent — Premium Orange */
+  --color-accent: #F2572B;
+  --color-accent-hover: #ff6b3d;
+  --color-accent-dim: rgba(242, 87, 43, 0.15);
+  
+  /* Alternative accent documented for future use — NOT CURRENTLY USED */
+  /* --color-accent-lime: #C6FF34 */
   
   --color-border: rgba(255, 255, 255, 0.08);
   --color-border-subtle: rgba(255, 255, 255, 0.04);

@@ -73,29 +73,6 @@ section {
   z-index: 2;
 }
 
-/* Badge Styles */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-2) var(--space-4);
-  border: 1px solid var(--color-border);
-  border-radius: 100px;
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: var(--color-text-secondary);
-  background: var(--color-bg-secondary);
-  transition: all var(--transition-fast);
-}
-
-.badge-indicator {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--color-accent);
-  animation: pulse 2s ease-in-out infinite;
-}
-
 @keyframes pulse {
   0%, 100% {
     opacity: 1;
@@ -105,51 +82,6 @@ section {
     opacity: 0.5;
     transform: scale(1.2);
   }
-}
-
-/* CTA Button */
-.cta-button {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-4) var(--space-8);
-  border: 1px solid var(--color-border);
-  border-radius: 100px;
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-text-primary);
-  background: var(--color-bg-secondary);
-  transition: all var(--transition-base);
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--color-accent-dim);
-    opacity: 0;
-    transition: opacity var(--transition-base);
-  }
-  
-  &:hover {
-    border-color: var(--color-accent);
-    
-    &::before {
-      opacity: 1;
-    }
-    
-    .cta-arrow {
-      transform: translateX(4px);
-    }
-  }
-}
-
-.cta-arrow {
-  font-size: var(--text-lg);
-  transition: transform var(--transition-fast);
 }
 
 /* Scroll to Top */
@@ -197,7 +129,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  border-radius: 4px;
   background: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
   color: var(--color-text-primary);
@@ -205,8 +137,8 @@ section {
   cursor: pointer;
   
   svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
   
   .icon-moon {
