@@ -62,16 +62,32 @@ function openMenu() {
   setCursorMenuState(true);
   
   // Animate background overlay with premium slow transition
-  gsap.to(menuOverlay, {
-    opacity: 1,
-    duration: 0.6,
-    ease: 'power3.out'
-  });
+  gsap.fromTo(menuOverlay, 
+    { opacity: 0 },
+    { 
+      opacity: 1, 
+      duration: 0.9, 
+      ease: 'power3.out' 
+    }
+  );
+  
+  // Stagger reveal menu navigation items
+  gsap.fromTo('.menu-link',
+    { opacity: 0, y: 50 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.7,
+      stagger: 0.08,
+      ease: 'power3.out',
+      delay: 0.2
+    }
+  );
   
   // Focus first menu item for accessibility
   const firstLink = menuOverlay.querySelector('.menu-link');
   if (firstLink) {
-    setTimeout(() => firstLink.focus(), 500);
+    setTimeout(() => firstLink.focus(), 600);
   }
 }
 
@@ -91,12 +107,21 @@ function closeMenu() {
   // Animate background overlay out
   gsap.to(menuOverlay, {
     opacity: 0,
+    duration: 0.5,
+    ease: 'power2.in'
+  });
+  
+  // Animate menu items out
+  gsap.to('.menu-link', {
+    opacity: 0,
+    y: 30,
     duration: 0.4,
+    stagger: 0.04,
     ease: 'power2.in'
   });
   
   // Return focus to menu toggle
-  setTimeout(() => menuToggle.focus(), 400);
+  setTimeout(() => menuToggle.focus(), 500);
 }
 
 function setupNavigationLinks(config) {
