@@ -83,60 +83,61 @@ function updateConnectorPaths() {
   const viewBoxHeight = viewBox[3];
 
   // Calculate scale factors
-  const scaleX = svgRect.width / viewBoxWidth;
-  const scaleY = svgRect.height / viewBoxHeight;
+  const scaleX = viewBoxWidth / svgRect.width;
+  const scaleY = viewBoxHeight / svgRect.height;
 
   // Safeguard against zero or NaN scale
   if (!scaleX || !scaleY || !isFinite(scaleX) || !isFinite(scaleY)) {
     return;
   }
 
-  // Convert viewport to SVG coordinates
-  // Left badge: inner right edge, center vertical
-  const leftBadgeRightX = (badgeLeftRect.right - svgRect.left) / scaleX;
-  const leftBadgeCenterY = (badgeLeftRect.top + badgeLeftRect.height / 2 - svgRect.top) / scaleY;
+  // LEFT BADGE: Connect from inner RIGHT edge (the side facing center)
+  // The node should be exactly at the badge's inner edge, centered vertically
+  const leftBadgeInnerX = badgeLeftRect.right - svgRect.left;
+  const leftBadgeCenterY = badgeLeftRect.top + badgeLeftRect.height / 2 - svgRect.top;
+  
+  // Convert to SVG coordinates
+  const leftBadgeNodeX = leftBadgeInnerX * scaleX;
+  const leftBadgeNodeY = leftBadgeCenterY * scaleY;
 
-  // Right badge: inner left edge, center vertical
-  const rightBadgeLeftX = (badgeRightRect.left - svgRect.left) / scaleX;
-  const rightBadgeCenterY = (badgeRightRect.top + badgeRightRect.height / 2 - svgRect.top) / scaleY;
+  // RIGHT BADGE: Connect from inner LEFT edge (the side facing center)
+  const rightBadgeInnerX = badgeRightRect.left - svgRect.left;
+  const rightBadgeCenterY = badgeRightRect.top + badgeRightRect.height / 2 - svgRect.top;
+  
+  // Convert to SVG coordinates
+  const rightBadgeNodeX = rightBadgeInnerX * scaleX;
+  const rightBadgeNodeY = rightBadgeCenterY * scaleY;
 
-  // Safeguard against Infinity values
-  if (!isFinite(leftBadgeRightX) || !isFinite(leftBadgeCenterY) || 
-      !isFinite(rightBadgeLeftX) || !isFinite(rightBadgeCenterY)) {
-    return;
-  }
+  // Calculate diagonal start points (coming from below, angling up toward badges)
+  // The diagonal should start below the badge level and angle up to meet the horizontal segment
+  const diagonalOffsetY = 140 * scaleY; // Vertical offset for diagonal start
+  const horizontalSegmentLength = 150 * scaleX; // Length of horizontal segment
+  
+  // Left connector: diagonal starts lower and to the left, angles up-right to horizontal, then straight to badge
+  const leftDiagonalStartX = leftBadgeNodeX - horizontalSegmentLength;
+  const leftDiagonalStartY = leftBadgeNodeY + diagonalOffsetY;
+  const leftHorizontalStartX = leftBadgeNodeX - horizontalSegmentLength;
+  const leftHorizontalStartY = leftBadgeNodeY;
+  
+  // Right connector: diagonal starts lower and to the right, angles up-left to horizontal, then straight to badge
+  const rightDiagonalStartX = rightBadgeNodeX + horizontalSegmentLength;
+  const rightDiagonalStartY = rightBadgeNodeY + diagonalOffsetY;
+  const rightHorizontalStartX = rightBadgeNodeX + horizontalSegmentLength;
+  const rightHorizontalStartY = rightBadgeNodeY;
 
-  // Define connector points (coming from center, approaching badge centers)
-  // Left connector: from diagonal down below intro, up to horizontal, to badge right edge
-  // We'll aim the diagonal to end somewhere near the center, below the intro.
-  const leftConnectorStartX = leftBadgeRightX - 180;
-  const leftConnectorStartY = leftBadgeCenterY;
-  const leftConnectorEndX = leftBadgeRightX;
-  const leftConnectorEndY = leftBadgeCenterY;
-  const leftDiagonalStartX = leftConnectorStartX + 120;
-  const leftDiagonalStartY = leftConnectorStartY + 140;
-
-  // Right connector: from right side of container, curving to badge left edge
-  const rightConnectorStartX = rightBadgeLeftX + 180;
-  const rightConnectorStartY = rightBadgeCenterY;
-  const rightConnectorEndX = rightBadgeLeftX;
-  const rightConnectorEndY = rightBadgeCenterY;
-  const rightDiagonalStartX = rightConnectorStartX - 120;
-  const rightDiagonalStartY = rightConnectorStartY + 140;
-
-  // Update paths with straight line and diagonal
-  const leftPath = `M ${leftDiagonalStartX} ${leftDiagonalStartY} L ${leftConnectorStartX} ${leftConnectorStartY} L ${leftConnectorEndX} ${leftConnectorEndY}`;
-  const rightPath = `M ${rightDiagonalStartX} ${rightDiagonalStartY} L ${rightConnectorStartX} ${rightConnectorStartY} L ${rightConnectorEndX} ${rightConnectorEndY}`;
+  // Update paths: diagonal segment -> horizontal segment -> badge connection
+  const leftPath = `M ${leftDiagonalStartX} ${leftDiagonalStartY} L ${leftHorizontalStartX} ${leftHorizontalStartY} L ${leftBadgeNodeX} ${leftBadgeNodeY}`;
+  const rightPath = `M ${rightDiagonalStartX} ${rightDiagonalStartY} L ${rightHorizontalStartX} ${rightHorizontalStartY} L ${rightBadgeNodeX} ${rightBadgeNodeY}`;
 
   connectorLeft.setAttribute('d', leftPath);
   connectorRight.setAttribute('d', rightPath);
 
   // Update endpoint circles to sit exactly at badge connection points
-  endpointLeft.setAttribute('cx', leftBadgeRightX);
-  endpointLeft.setAttribute('cy', leftBadgeCenterY);
+  endpointLeft.setAttribute('cx', leftBadgeNodeX);
+  endpointLeft.setAttribute('cy', leftBadgeNodeY);
 
-  endpointRight.setAttribute('cx', rightBadgeLeftX);
-  endpointRight.setAttribute('cy', rightBadgeCenterY);
+  endpointRight.setAttribute('cx', rightBadgeNodeX);
+  endpointRight.setAttribute('cy', rightBadgeNodeY);
 }
 
 export function destroyConnectors() {
