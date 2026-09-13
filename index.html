@@ -32,6 +32,7 @@
   <body>
     <!-- Custom Cursor -->
     <div class="cursor" id="cursor">
+      <div class="cursor-trail" aria-hidden="true"></div>
       <div class="cursor-dot"></div>
       <div class="cursor-ring"></div>
     </div>
@@ -78,54 +79,22 @@
     <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
       <nav class="menu-nav" id="menuNav">
         <ul class="menu-list">
-          <li class="menu-item">
-            <a href="#" class="menu-link" data-section="home">
-              <span class="menu-number">01</span>
-              <span class="menu-label">Home</span>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="#" class="menu-link" data-section="work">
-              <span class="menu-number">02</span>
-              <span class="menu-label">Work</span>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="#" class="menu-link" data-section="about">
-              <span class="menu-number">03</span>
-              <span class="menu-label">About</span>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="#" class="menu-link" data-section="services">
-              <span class="menu-number">04</span>
-              <span class="menu-label">Services</span>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="#" class="menu-link" data-section="contact">
-              <span class="menu-number">05</span>
-              <span class="menu-label">Contact</span>
-            </a>
-          </li>
+          <li class="menu-item"><a href="#" class="menu-link" data-section="home"><span class="menu-number">01</span><span class="menu-label">Home</span></a></li>
+          <li class="menu-item"><a href="#" class="menu-link" data-section="work"><span class="menu-number">02</span><span class="menu-label">Work</span></a></li>
+          <li class="menu-item"><a href="#" class="menu-link" data-section="about"><span class="menu-number">03</span><span class="menu-label">About</span></a></li>
+          <li class="menu-item"><a href="#" class="menu-link" data-section="services"><span class="menu-number">04</span><span class="menu-label">Services</span></a></li>
+          <li class="menu-item"><a href="#" class="menu-link" data-section="contact"><span class="menu-number">05</span><span class="menu-label">Contact</span></a></li>
         </ul>
       </nav>
-      
       <div class="menu-footer">
-        <div class="menu-meta">
-          <span>Available for select projects</span>
-          <span>Based in Pakistan</span>
-        </div>
+        <div class="menu-meta"><span>Available for select projects</span><span>Based in Pakistan</span></div>
       </div>
     </div>
     
     <!-- Main Content -->
     <main id="main-content">
-      <!-- Hero Section -->
       <section class="hero" id="hero">
-        <div class="hero-background">
-          <div class="hero-grid"></div>
-        </div>
+        <div class="hero-background"><div class="hero-grid"></div></div>
         
         <div class="hero-typography">
           <div class="hero-intro">
@@ -142,85 +111,47 @@
         
         <div class="hero-portrait-container">
           <div class="hero-portrait">
-            <img 
-              src="/assets/images/asif-hero.png"
-              alt="Asif — Designer and Developer"
-              class="portrait-image"
-              loading="eager"
-              fetchpriority="high"
-            />
+            <img src="/assets/images/asif-hero.png" alt="Asif — Designer and Developer" class="portrait-image" loading="eager" fetchpriority="high" />
             <div class="portrait-blend"></div>
           </div>
         </div>
         
         <div class="hero-social hero-social-left">
-          <a href="#" class="social-link" data-hover="external">
-            <span class="social-label">LinkedIn</span>
-          </a>
-          <a href="#" class="social-link" data-hover="external">
-            <span class="social-label">Upwork</span>
-          </a>
-          <a href="#" class="social-link" data-hover="external">
-            <span class="social-label">Fiverr</span>
-          </a>
+          <a href="#" class="social-link" data-hover="external"><span class="social-label">LinkedIn</span></a>
+          <a href="#" class="social-link" data-hover="external"><span class="social-label">Upwork</span></a>
+          <a href="#" class="social-link" data-hover="external"><span class="social-label">Fiverr</span></a>
         </div>
-        
         <div class="hero-social hero-social-right">
-          <a href="#" class="social-link" data-hover="external">
-            <span class="social-label">Instagram</span>
-          </a>
-          <a href="mailto:hello@devbyasif.com" class="social-link" data-hover="email">
-            <span class="social-label">Contact</span>
-          </a>
+          <a href="#" class="social-link" data-hover="external"><span class="social-label">Instagram</span></a>
+          <a href="mailto:hello@devbyasif.com" class="social-link" data-hover="email"><span class="social-label">Contact</span></a>
         </div>
         
         <div class="hero-badges">
-          <div class="badge badge-left">
-            <span class="badge-dot"></span>
-            SELECTED PROJECTS
-          </div>
-          <div class="badge badge-right">
-            <span class="badge-dot"></span>
-            WORDPRESS / WEBFLOW
-          </div>
+          <div class="badge badge-left">SELECTED PROJECTS</div>
+          <div class="badge badge-right">WEB DESIGN / DEVELOPMENT</div>
         </div>
         
         <div class="hero-cta">
           <a href="mailto:hello@devbyasif.com" class="cta-button" data-cursor="expand">
             <span class="cta-text">LET'S BUILD SOMETHING</span>
-            <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
+            <svg class="cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
           </a>
         </div>
         
-        <!-- Scroll Indicator -->
         <div class="hero-scroll-indicator" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 9l6 6 6-6"/>
-          </svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
         </div>
         
-        <!-- Connector Lines SVG -->
-        <svg class="hero-connectors" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <!-- Left connector -->
-          <path class="connector-line connector-left" d="M 84 164 L 440 164 L 590 310" />
-          <circle class="connector-endpoint" cx="0" cy="0" r="3" fill="#F2572B" />
-          <!-- Right connector -->
-          <path class="connector-line connector-right" d="M 850 310 L 1000 164 L 1356 164" />
-          <circle class="connector-endpoint" cx="0" cy="0" r="3" fill="#F2572B" />
+        <svg class="hero-connectors" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+          <path class="connector-line connector-left" d="M 0 0 L 0 0" />
+          <circle class="connector-endpoint connector-endpoint-left" cx="0" cy="0" r="3" fill="#F2572B" />
+          <path class="connector-line connector-right" d="M 0 0 L 0 0" />
+          <circle class="connector-endpoint connector-endpoint-right" cx="0" cy="0" r="3" fill="#F2572B" />
         </svg>
       </section>
     </main>
     
-    <!-- Scroll to Top Button -->
-    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M12 19V5M5 12l7-7 7 7" />
-      </svg>
-    </button>
-    
-    <!-- Scripts -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 19V5M5 12l7-7 7 7" /></svg></button>
     <script type="module" src="/src/js/main.js"></script>
   </body>
 </html>
